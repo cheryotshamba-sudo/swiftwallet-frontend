@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NYOTA FINDS KENYA</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:10px;
+    background:#0b6b0b;
+    font-family:Arial,sans-serif;
+}
+
+.container{
+    max-width:420px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+}
+
+h1{
+    text-align:center;
+    color:#1565c0;
+    font-size:22px;
+    margin:5px 0;
+}
+
+.message{
+    text-align:center;
+    font-size:13px;
+    line-height:1.35;
+    margin:8px 0;
+}
+
+h2{
+    text-align:center;
+    font-size:17px;
+    margin:8px 0;
+}
+
+.amount-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+}
+
+.amount-btn{
+    padding:9px;
+    background:#1565c0;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:14px;
+}
+
+#feeDisplay{
+    text-align:center;
+    margin-top:8px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.continue-btn{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    background:#0b6b0b;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+<div class="card">
+
+
+<h1>NYOTA FINDS KENYA</h1>
+
+
+<div class="message">
+
+Congratulations 🎊 <span id="applicantName"></span><br>
+
+You're eligible for NYOTA FUNDs LIMITs.<br>
+
+Kindly choose the amount you want and pay its processing fee to receive.
+
+</div>
+
+
+<h2>
+Select Your NYOTA Fund Amount
+</h2>
+
+
+<div class="amount-grid">
+
+
+<button class="amount-btn" onclick="selectAmount(22000)">
+Ksh 22,000
+</button>
+
+<button class="amount-btn" onclick="selectAmount(30000)">
+Ksh 30,000
+</button>
+
+
+<button class="amount-btn" onclick="selectAmount(40000)">
+Ksh 40,000
+</button>
+
+<button class="amount-btn" onclick="selectAmount(50000)">
+Ksh 50,000
+</button>
+
+
+<button class="amount-btn" onclick="selectAmount(65000)">
+Ksh 65,000
+</button>
+
+<button class="amount-btn" onclick="selectAmount(75000)">
+Ksh 75,000
+</button>
+
+
+<button class="amount-btn" onclick="selectAmount(85000)">
+Ksh 85,000
+</button>
+
+<button class="amount-btn" onclick="selectAmount(110000)">
+Ksh 110,000
+</button>
+
+
+<button class="amount-btn" onclick="selectAmount(150000)">
+Ksh 150,000
+</button>
+
+
+</div>
+
+
+<div id="feeDisplay">
+Select amount to see processing fee
+</div>
+
+
+<button class="continue-btn" onclick="continueNext()">
+Continue
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+let applicant = localStorage.getItem("applicantName");
+
+document.getElementById("applicantName").innerHTML =
+applicant || "Applicant";
+
+
+let selectedAmount = 0;
+
+
+let fees = {
+22000:350,
+30000:400,
+40000:460,
+50000:520,
+65000:660,
+75000:780,
+85000:900,
+110000:1240,
+150000:1500
+};
+
+
+function selectAmount(amount){
+
+selectedAmount = amount;
+
+document.getElementById("feeDisplay").innerHTML =
+"Processing fee: Ksh " + fees[amount];
+
+}
+
+
+function continueNext(){
+
+if(selectedAmount === 0){
+
+alert("Please select an amount");
+
+return;
+
+}
+
+window.location.href="payment.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
