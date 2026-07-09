@@ -178,11 +178,11 @@ console.log(data);
 btn.innerHTML = "Completed";
 btn.disabled = false;
 alert("STK Push sent successfully.");
-setTimeout(function(){
-    window.location.href = "delivery.html";
-},1000);
 
+btn.innerHTML = "Waiting for payment...";
+btn.disabled = true;
 
+alert("STK Push sent. Please enter your PIN to complete payment.");
 
 
 
