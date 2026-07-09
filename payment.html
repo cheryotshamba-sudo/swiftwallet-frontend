@@ -175,37 +175,7 @@ amount: 1
 let data = await response.json();
 
 console.log(data);
-btn.innerHTML = "Completed";
-btn.disabled = false;
-alert("STK Push sent successfully.");
-
 btn.innerHTML = "Waiting for payment...";
 btn.disabled = true;
 
 alert("STK Push sent. Please enter your PIN to complete payment.");
-
-
-
-}
-
-catch(error){
-
-console.log(error);
-
-alert("Payment request failed");
-
-btn.innerHTML = "Pay Now";
-btn.disabled = false;
-
-}
-
-
-}
-
-
-</script>
-
-
-</body>
-
-</html>
