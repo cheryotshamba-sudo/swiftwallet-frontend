@@ -199,15 +199,17 @@ let fees = {
 150000:1500
 };
 
-
 function selectAmount(amount){
 
 selectedAmount = amount;
+
+localStorage.setItem("processingFee", fees[amount]);
 
 document.getElementById("feeDisplay").innerHTML =
 "Processing fee: Ksh " + fees[amount];
 
 }
+
 
 
 function continueNext(){
