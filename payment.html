@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NYOTA FUNDS</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:15px;
+    background:#0b6b0b;
+    font-family:Arial,sans-serif;
+}
+
+.container{
+    max-width:420px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+h1{
+    text-align:center;
+    color:#1565c0;
+    font-size:22px;
+}
+
+p{
+    text-align:center;
+    font-size:15px;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:5px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    background:#1565c0;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+<div class="card">
+
+
+<h1>
+NYOTA FUNDS Processing Fee Payment
+</h1>
+
+
+<p>
+Hi 👋 <span id="name"></span>!
+</p>
+
+
+<p>
+Complete your payment to activate your NYOTA investment plan.
+</p>
+
+
+<p>
+Testing Amount: <b>Ksh 1</b>
+</p>
+
+
+<label>
+Full Name
+</label>
+
+<input type="text" id="fullName">
+
+
+<label>
+Phone Number
+</label>
+
+<input type="tel" id="phone" placeholder="2547XXXXXXXX">
+
+
+<button id="payBtn" onclick="payNow()">
+Pay Now
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+let applicant = localStorage.getItem("applicantName");
+
+document.getElementById("name").innerHTML =
+applicant || "Applicant";
+
+
+
+async function payNow(){
+
+
+let phone = document.getElementById("phone").value;
+
+let btn = document.getElementById("payBtn");
+
+
+if(phone===""){
+
+alert("Enter phone number");
+return;
+
+}
+
+
+btn.innerHTML = "Sending STK Push...";
+btn.disabled = true;
+
+
+
+try{
+
+
+
+let response = await fetch(
+"https://swiftwallet-backend-k8kn.onrender.com/stk-push",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body: JSON.stringify({
+phone: phone,
+amount: 1
+})
+}
+);
+
+let data = await response.json();
+
+console.log(data);
+btn.innerHTML = "Completed";
+btn.disabled = false;
+alert("STK Push sent successfully.");
+setTimeout(function(){
+    window.location.href = "delivery.html";
+},1000);
+
+
+
+
+
+}
+
+catch(error){
+
+console.log(error);
+
+alert("Payment request failed");
+
+btn.innerHTML = "Pay Now";
+btn.disabled = false;
+
+}
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
