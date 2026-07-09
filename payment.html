@@ -184,5 +184,5 @@ let data = await response.json();
 console.log(data);
 btn.innerHTML = "Waiting for payment...";
 btn.disabled = true;
-
-alert("STK Push sent. Please enter your PIN to complete payment.");
+document.getElementById("stkMessage").innerHTML =
+"STK Push sent. Enter your M-PESA PIN to complete payment.";
