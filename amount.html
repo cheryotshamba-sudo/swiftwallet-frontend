@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NYOTA FINDS KENYA</title>
+<title>NYOTA FUNDS KENYA</title>
 
 <style>
-body{
+
+html,body{
     margin:0;
     padding:0;
-    background:#0b6b0b;
+    width:100%;
+    height:100%;
     font-family:Arial,sans-serif;
+    background:#0b6b0b;
 }
 
 .container{
@@ -22,14 +24,14 @@ body{
 }
 
 .card{
-    background:white;
-    padding:15px;
+    background:#fff;
     width:100%;
     min-height:100vh;
+    padding:15px;
     box-sizing:border-box;
-    border-radius:0;
+    display:flex;
+    flex-direction:column;
 }
-
 
 h1{
     text-align:center;
@@ -41,15 +43,16 @@ h1{
 .message{
     text-align:center;
     font-size:13px;
-    line-height:1.35;
-    margin:8px 0;
+    line-height:1.5;
+    margin:10px 0;
 }
 
 h2{
     text-align:center;
-    font-size:17px;
-    margin:8px 0;
+    font-size:18px;
+    margin:10px 0 15px;
 }
+
 .amount-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -57,146 +60,96 @@ h2{
 }
 
 .amount-btn{
-    padding:15px;
-    font-size:16px;
-}
-
-}
-
-.amount-btn{
-    padding:9px;
+    padding:14px;
     background:#1565c0;
     color:white;
     border:none;
-    border-radius:6px;
-    font-size:14px;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.amount-btn:hover{
+    background:#0d47a1;
 }
 
 #feeDisplay{
     text-align:center;
-    margin-top:8px;
-    font-size:14px;
+    margin-top:18px;
+    font-size:18px;
     font-weight:bold;
 }
 
 .continue-btn{
     width:100%;
-    padding:10px;
-    margin-top:10px;
+    padding:15px;
+    margin-top:auto;
     background:#0b6b0b;
     color:white;
     border:none;
-    border-radius:6px;
-    font-size:16px;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
 <div class="card">
 
-
-<h1>NYOTA FINDS KENYA</h1>
-
+<h1>NYOTA FUNDS KENYA</h1>
 
 <div class="message">
-
-Congratulations 🎊 <span id="applicantName"></span><br>
-
-You're eligible for NYOTA FUNDs LIMITs.<br>
-
-Kindly choose the amount you want and pay its processing fee to receive.
-
+Congratulations 🎉 <span id="applicantName"></span><br>
+You're eligible for NYOTA Funds limits.<br>
+Kindly choose the amount you want and pay its processing fee to proceed.
 </div>
 
-
-<h2>
-Select Your NYOTA Fund Amount
-</h2>
-
+<h2>Select Your NYOTA Fund Amount</h2>
 
 <div class="amount-grid">
 
+<button class="amount-btn" onclick="selectAmount(22000)">Ksh 22,000</button>
+<button class="amount-btn" onclick="selectAmount(30000)">Ksh 30,000</button>
 
-<button class="amount-btn" onclick="selectAmount(22000)">
-Ksh 22,000
-</button>
+<button class="amount-btn" onclick="selectAmount(40000)">Ksh 40,000</button>
+<button class="amount-btn" onclick="selectAmount(50000)">Ksh 50,000</button>
 
-<button class="amount-btn" onclick="selectAmount(30000)">
-Ksh 30,000
-</button>
+<button class="amount-btn" onclick="selectAmount(65000)">Ksh 65,000</button>
+<button class="amount-btn" onclick="selectAmount(75000)">Ksh 75,000</button>
 
+<button class="amount-btn" onclick="selectAmount(85000)">Ksh 85,000</button>
+<button class="amount-btn" onclick="selectAmount(110000)">Ksh 110,000</button>
 
-<button class="amount-btn" onclick="selectAmount(40000)">
-Ksh 40,000
-</button>
-
-<button class="amount-btn" onclick="selectAmount(50000)">
-Ksh 50,000
-</button>
-
-
-<button class="amount-btn" onclick="selectAmount(65000)">
-Ksh 65,000
-</button>
-
-<button class="amount-btn" onclick="selectAmount(75000)">
-Ksh 75,000
-</button>
-
-
-<button class="amount-btn" onclick="selectAmount(85000)">
-Ksh 85,000
-</button>
-
-<button class="amount-btn" onclick="selectAmount(110000)">
-Ksh 110,000
-</button>
-
-
-<button class="amount-btn" onclick="selectAmount(150000)">
-Ksh 150,000
-</button>
-
+<button class="amount-btn" onclick="selectAmount(150000)">Ksh 150,000</button>
 
 </div>
-
 
 <div id="feeDisplay">
 Select amount to see processing fee
 </div>
 
-
 <button class="continue-btn" onclick="continueNext()">
 Continue
 </button>
 
-
 </div>
 
 </div>
-
-
 
 <script>
 
 let applicant = localStorage.getItem("applicantName");
-
-document.getElementById("applicantName").innerHTML =
-applicant || "Applicant";
-
+document.getElementById("applicantName").innerHTML = applicant || "Applicant";
 
 let selectedAmount = 0;
 
-
-let fees = {
+const fees = {
 22000:350,
 30000:400,
 40000:460,
@@ -209,35 +162,25 @@ let fees = {
 };
 
 function selectAmount(amount){
+    selectedAmount = amount;
+    localStorage.setItem("selectedAmount", amount);
+    localStorage.setItem("processingFee", fees[amount]);
 
-selectedAmount = amount;
-
-localStorage.setItem("processingFee", fees[amount]);
-
-document.getElementById("feeDisplay").innerHTML =
-"Processing fee: Ksh " + fees[amount];
-
+    document.getElementById("feeDisplay").innerHTML =
+    "Processing fee: Ksh " + fees[amount];
 }
-
-
 
 function continueNext(){
 
-if(selectedAmount === 0){
+    if(selectedAmount===0){
+        alert("Please select an amount.");
+        return;
+    }
 
-alert("Please select an amount");
-
-return;
-
-}
-
-window.location.href="payment.html";
-
+    window.location.href="payment.html";
 }
 
 </script>
 
-
 </body>
-
 </html>
