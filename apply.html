@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NYOTA Fund Application</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:20px;
+    background:#0b6b0b;
+    font-family:Arial,sans-serif;
+}
+
+.container{
+    max-width:450px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+}
+
+h1{
+    text-align:center;
+    color:#1565c0;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+input, select{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    background:#1565c0;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>NYOTA Fund Application</h1>
+
+<form onsubmit="submitApplication(event)">
+
+<label>Full Name</label>
+<input type="text" id="applicantName" required>
+
+<label>ID Number</label>
+<input type="number" required>
+
+<label>Phone Number</label>
+<input type="tel" placeholder="07XXXXXXXX" required>
+
+<label>County</label>
+
+<select required>
+<option value="">Select County</option>
+<option>Nairobi</option>
+<option>Mombasa</option>
+<option>Kisumu</option>
+<option>Nakuru</option>
+<option>Kiambu</option>
+<option>Meru</option>
+<option>Machakos</option>
+</select>
+
+<label>Occupation</label>
+
+<select required>
+<option value="">Select Occupation</option>
+<option>Business Owner</option>
+<option>Student</option>
+<option>Employed</option>
+<option>Farmer</option>
+<option>Driver</option>
+<option>Freelancer</option>
+<option>Self Employed</option>
+<option>Other</option>
+</select>
+
+<button type="submit">Continue</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script>
+
+function submitApplication(event){
+
+event.preventDefault();
+
+let name=document.getElementById("applicantName").value;
+
+localStorage.setItem("applicantName",name);
+
+window.location.href="purpose.html";
