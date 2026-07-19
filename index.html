@@ -1,61 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NYOTA FINDS KENYA</title>
+<title>NYOTA Fund Kenya</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-body{
+*{
     margin:0;
-    padding:20px;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
     background:#0b6b0b;
-    font-family:Arial,sans-serif;
+    padding:20px;
 }
 
-.container{
-    max-width:450px;
-    margin:auto;
-}
-
-.card{
+.hero,.card{
+    max-width:500px;
+    margin:20px auto;
     background:white;
+    border-radius:20px;
     padding:25px;
-    border-radius:12px;
+}
+
+.logo{
+    width:100%;
+    max-height:170px;
+    object-fit:contain;
 }
 
 h1{
     text-align:center;
     color:#1565c0;
+    margin:20px 0 10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#333;
+    line-height:1.7;
+}
+
+.about{
+    margin-top:25px;
+}
+
+.about h2{
+    color:#1565c0;
+    margin-bottom:10px;
+}
+
+.about p{
+    line-height:1.8;
+    color:#444;
+}
+
+.startBtn{
+    width:100%;
+    padding:16px;
+    margin-top:25px;
+    background:#22c55e;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
 }
 
 label{
     display:block;
-    margin-top:15px;
-    font-weight:bold;
+    margin-top:18px;
+    font-weight:600;
 }
 
-input, select{
-    width:100%;
-    padding:12px;
-    margin-top:6px;
-    border-radius:8px;
-    border:1px solid #ccc;
-    box-sizing:border-box;
-}
-
-button{
+input,select{
     width:100%;
     padding:14px;
-    margin-top:20px;
+    margin-top:6px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.submitBtn{
+    width:100%;
+    padding:16px;
+    margin-top:25px;
     background:#1565c0;
     color:white;
     border:none;
-    border-radius:8px;
+    border-radius:10px;
     font-size:18px;
+    cursor:pointer;
+}
+
+#formSection{
+    display:none;
 }
 
 </style>
@@ -64,85 +111,78 @@ button{
 
 <body>
 
-<div class="container">
+<div class="hero">
 
-<div class="card">
+<img src="logo.png" class="logo" alt="NYOTA Logo">
 
-<h1>NYOTA FINDS KENYA</h1>
+<h1>NYOTA Fund Kenya</h1>
 
+<p class="subtitle">
+Empowering Youth • Supporting Businesses • Strengthening Kenya's Economy
+</p>
+
+<div class="about">
+
+<h2>About the NYOTA Fund</h2>
+
+<p>
+NYOTA Fund is a national financial empowerment initiative focused on supporting youth entrepreneurs across Kenya through accessible and affordable funding opportunities.
+</p>
+
+<button class="startBtn" onclick="showForm()">
+Start Application
+</button>
+
+</div>
+
+</div>
+
+<div class="card" id="formSection">
+
+<h1>Application Form</h1>
 
 <form onsubmit="submitApplication(event)">
-
 
 <label>Full Name</label>
 <input type="text" id="applicantName" required>
 
-
 <label>ID Number</label>
 <input type="number" required>
-
 
 <label>Phone Number</label>
 <input type="tel" placeholder="07XXXXXXXX" required>
 
-
 <label>County</label>
+
 <select required>
 
 <option value="">Select County</option>
 
 <option>Nairobi</option>
 <option>Mombasa</option>
-<option>Kwale</option>
-<option>Kilifi</option>
-<option>Tana River</option>
-<option>Lamu</option>
-<option>Taita Taveta</option>
-<option>Garissa</option>
-<option>Wajir</option>
-<option>Mandera</option>
-<option>Marsabit</option>
-<option>Isiolo</option>
+<option>Kisumu</option>
+<option>Nakuru</option>
+<option>Kiambu</option>
+<option>Uasin Gishu</option>
+<option>Kakamega</option>
 <option>Meru</option>
-<option>Tharaka Nithi</option>
+<option>Machakos</option>
+<option>Nyeri</option>
 <option>Embu</option>
 <option>Kitui</option>
-<option>Machakos</option>
-<option>Makueni</option>
-<option>Nyandarua</option>
-<option>Nyeri</option>
-<option>Kirinyaga</option>
-<option>Murang'a</option>
-<option>Kiambu</option>
-<option>Turkana</option>
-<option>West Pokot</option>
-<option>Samburu</option>
-<option>Trans Nzoia</option>
-<option>Uasin Gishu</option>
-<option>Elgeyo Marakwet</option>
-<option>Nandi</option>
-<option>Baringo</option>
-<option>Laikipia</option>
-<option>Nakuru</option>
-<option>Narok</option>
-<option>Kajiado</option>
-<option>Kericho</option>
-<option>Bomet</option>
-<option>Kakamega</option>
-<option>Vihiga</option>
-<option>Bungoma</option>
-<option>Busia</option>
-<option>Siaya</option>
-<option>Kisumu</option>
-<option>Homa Bay</option>
 <option>Migori</option>
+<option>Garissa</option>
+<option>Busia</option>
+<option>Bungoma</option>
+<option>Kilifi</option>
+<option>Kwale</option>
 <option>Kisii</option>
 <option>Nyamira</option>
 
 </select>
 
-
 <label>Occupation</label>
+
 <select required>
 
 <option value="">Select Occupation</option>
@@ -159,28 +199,30 @@ button{
 
 </select>
 
-
-<button type="submit">
+<button class="submitBtn" type="submit">
 Continue
 </button>
-
 
 </form>
 
 </div>
 
-</div>
-
-
 <script>
+
+function showForm(){
+
+document.querySelector(".hero").style.display="none";
+document.getElementById("formSection").style.display="block";
+
+}
 
 function submitApplication(event){
 
 event.preventDefault();
 
-let name = document.getElementById("applicantName").value;
+let name=document.getElementById("applicantName").value;
 
-localStorage.setItem("applicantName", name);
+localStorage.setItem("applicantName",name);
 
 window.location.href="purpose.html";
 
@@ -188,7 +230,5 @@ window.location.href="purpose.html";
 
 </script>
 
-
 </body>
-
 </html>
